@@ -6,6 +6,8 @@ import {
   GrYoutube,
 } from "react-icons/gr";
 import { AiOutlineMenu, AiOutlineDown, AiOutlineUp }from "react-icons/ai";
+import { FiSearch }from "react-icons/fi";
+import { CgShoppingCart }from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/khaasfood.png";
 import { useState } from "react";
@@ -89,13 +91,26 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* navbar bottom section */}
-      <div className="w-[85%] mx-auto mt-1 cursor-pointer" onMouseEnter={() => setMenuOpenClose(true)} onMouseLeave={() => setMenuOpenClose(false)}>
-        <div className="bg-main-color text-white flex flex-row w-[270px] justify-between py-3 px-2 items-center">
+      <div className="w-[85%] mx-auto mt-1 flex flex-row justify-between items-center" onMouseEnter={() => setMenuOpenClose(true)} onMouseLeave={() => setMenuOpenClose(false)}>
+        <div className="bg-main-color text-white flex flex-row w-[270px] justify-between py-3 px-2 items-center cursor-pointer">
             <AiOutlineMenu className="text-white" size={22}/>
             <p className="-ml-10">BROWSE CATEGORIES</p>                {menuOpenClose ? <AiOutlineUp /> : <AiOutlineDown /> }
         </div>
-        <div></div>
-        <div></div>
+
+        <div className="w-[40rem] flex flex-row border-2 border-main-color -ml-6 items-center justify-between py-2 rounded-3xl">
+            <input type="text" name="search" className="focus:outline-none w-[38rem] ml-1 pl-2 placeholder:text-main-color" placeholder="Search for product" />
+           <div className="mr-3 cursor-pointer">
+              <FiSearch size={20} />
+          </div>
+        </div>
+
+        <div className="flex flex-row space-x-4">
+          <h4 className="text-sm">MY ACCOUNT</h4>
+          <div className="flex flex-row">
+            <CgShoppingCart size={25} /> <span className="text-xs text-white bg-main-color h-4 w-4 text-center rounded-full -ml-2 -mt-1">2</span>
+          </div>
+          <p className="text-base font-bold">৳ 222</p>
+        </div>
       </div>
     </section>
   );
