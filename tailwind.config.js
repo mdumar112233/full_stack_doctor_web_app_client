@@ -3,8 +3,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'main-color': '#83b735'
+        'main-color': '#223a66',
+        'pink-color': '#e12454',
       },
+    },
+    screens: {
+      'tablet': '992px',
+      'xm': '400px',
+      '2xm': '375px',
     },
   },
   plugins: [],
