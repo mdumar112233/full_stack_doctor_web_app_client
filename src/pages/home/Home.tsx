@@ -1,4 +1,5 @@
 import React from 'react';
+import OurService from './OurService';
 import Service from './Service';
 import Statistic from './Statistic';
 import TopBanner from './TopBanner';
@@ -9,6 +10,7 @@ const Home: React.FC = () => {
             <TopBanner />
             <Service />
             <Statistic />
+            <OurService />
         </div>
     );
 };
