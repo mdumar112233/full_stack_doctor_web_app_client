@@ -23,7 +23,7 @@ const TopBanner = () => {
               ducimus earum cupiditate molestias voluptates alias?
             </p>
 
-            <div className="mt-4 text-white bg-main-color hover:bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
+            <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
               <p className="text-sm md:text-base">MAKE APPOINMENT</p>
               <BiChevronRight />
             </div>

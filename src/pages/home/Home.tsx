@@ -1,10 +1,12 @@
 import React from 'react';
-import TopBanner from '../top banner/TopBanner';
+import Service from './Service';
+import TopBanner from './TopBanner';
 
 const Home: React.FC = () => {
     return (
         <div className='mt-5'>
             <TopBanner />
+            <Service />
         </div>
     );
 };
