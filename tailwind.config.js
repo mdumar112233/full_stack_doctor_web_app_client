@@ -22,6 +22,9 @@ module.exports = {
       'topBanner': "url('/src/assets/images/banner.jpg')",
       'statistic': "url('/src/assets/images/doctor-image-4.jpg')",
     },
+    fontFamily: {
+      'exo': ["Exo", 'sans-serif'],
+    },
   },
   plugins: [],
 }
