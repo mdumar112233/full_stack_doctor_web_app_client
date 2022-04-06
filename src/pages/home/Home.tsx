@@ -1,9 +1,10 @@
 import React from 'react';
+import TopBanner from '../top banner/TopBanner';
 
 const Home: React.FC = () => {
     return (
-        <div className='mt-10'>
-            <h3 className=''>This is home</h3>
+        <div className='mt-5'>
+            <TopBanner />
         </div>
     );
 };

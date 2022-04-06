@@ -8,9 +8,17 @@ module.exports = {
       },
     },
     screens: {
-      'tablet': '992px',
       'xm': '400px',
       '2xm': '375px',
+      'sm': '640px',
+      'md': '768px',
+      'tablet': '992px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    backgroundImage: {
+      'topBanner': "url('/src/assets/images/banner.jpg')",
     },
   },
   plugins: [],
