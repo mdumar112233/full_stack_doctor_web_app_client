@@ -21,6 +21,7 @@ module.exports = {
     backgroundImage: {
       'topBanner': "url('/src/assets/images/banner.jpg')",
       'statistic': "url('/src/assets/images/doctor-image-4.jpg')",
+      'doctorBg': "url('/src/assets/images/doctor-image-3.jpg')",
     },
     fontFamily: {
       'exo': ["Exo", 'sans-serif'],

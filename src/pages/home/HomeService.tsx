@@ -4,7 +4,7 @@ import doctor_imag_2 from "../../assets/images/doctor-image-2.jpg";
 import doctor_imag_3 from "../../assets/images/doctor-image-3.jpg";
 import { BiChevronRight } from "react-icons/bi";
 
-const Service: React.FC = () => {
+const HomeService: React.FC = () => {
   return (
     <section className="w-[90%] xm:w-[80%] mx-auto mb-20">
       <div className="flex tablet:flex-row flex-col tablet:space-x-8 w-full">
@@ -52,4 +52,4 @@ const Service: React.FC = () => {
   );
 };
 
-export default Service;
+export default HomeService;

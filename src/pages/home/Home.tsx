@@ -1,16 +1,18 @@
 import React from 'react';
 import OurService from './OurService';
-import Service from './Service';
+import HomeService from './HomeService';
 import Statistic from './Statistic';
 import TopBanner from './TopBanner';
+import HomeAppoinment from './HomeAppoinment';
 
 const Home: React.FC = () => {
     return (
         <div className='mt-5'>
             <TopBanner />
-            <Service />
+            <HomeService />
             <Statistic />
             <OurService />
+            <HomeAppoinment />
         </div>
     );
 };
