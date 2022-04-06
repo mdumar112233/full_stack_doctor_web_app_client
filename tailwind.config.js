@@ -20,6 +20,7 @@ module.exports = {
     },
     backgroundImage: {
       'topBanner': "url('/src/assets/images/banner.jpg')",
+      'statistic': "url('/src/assets/images/doctor-image-4.jpg')",
     },
   },
   plugins: [],

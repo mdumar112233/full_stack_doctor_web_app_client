@@ -1,5 +1,6 @@
 import React from 'react';
 import Service from './Service';
+import Statistic from './Statistic';
 import TopBanner from './TopBanner';
 
 const Home: React.FC = () => {
@@ -7,6 +8,7 @@ const Home: React.FC = () => {
         <div className='mt-5'>
             <TopBanner />
             <Service />
+            <Statistic />
         </div>
     );
 };

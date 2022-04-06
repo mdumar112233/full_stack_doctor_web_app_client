@@ -3,7 +3,7 @@ import { BiChevronRight, BiTimeFive } from "react-icons/bi";
 import { MdLocalHospital, MdOutlineSupportAgent } from "react-icons/md";
 // import { BiChevronRight } from "react-icons/bi";
 
-const TopBanner = () => {
+const TopBanner: React.FC = () => {
   return (
     <section>
         {/* top banner */}
