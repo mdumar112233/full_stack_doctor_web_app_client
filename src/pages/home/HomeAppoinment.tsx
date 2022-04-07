@@ -3,7 +3,7 @@ import doctor_appoint from "../../assets/images/doctor-image-3.jpg";
 import { BiChevronRight } from "react-icons/bi";
 import { BsTelephoneForwardFill } from "react-icons/bs";
 
-const HomeAppoinment = () => {
+const HomeAppoinment: React.FC = () => {
   return (
     <section className="w-[90%] xm:w-[80%] mx-auto flex mb-20 mt-20 tablet:space-x-8 justify-between tablet:items-center tablet:flex-row flex-col">
       <div className="bg-doctorBg h-[35rem] bg-cover bg-center sm:w-[80%] md:w-[70%] tablet:w-[45%]">

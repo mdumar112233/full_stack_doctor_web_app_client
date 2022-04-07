@@ -4,6 +4,8 @@ import HomeService from './HomeService';
 import Statistic from './Statistic';
 import TopBanner from './TopBanner';
 import HomeAppoinment from './HomeAppoinment';
+import Review from './Review';
+import SupportUs from './SupportUs';
 
 const Home: React.FC = () => {
     return (
@@ -13,6 +15,8 @@ const Home: React.FC = () => {
             <Statistic />
             <OurService />
             <HomeAppoinment />
+            <Review />
+            <SupportUs />
         </div>
     );
 };

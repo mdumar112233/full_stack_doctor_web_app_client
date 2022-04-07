@@ -27,5 +27,6 @@ module.exports = {
       'exo': ["Exo", 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
