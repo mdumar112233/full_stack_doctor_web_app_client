@@ -6,6 +6,7 @@ import TopBanner from './TopBanner';
 import HomeAppoinment from './HomeAppoinment';
 import Review from './Review';
 import SupportUs from './SupportUs';
+import Footer from '../../components/common/Footer';
 
 const Home: React.FC = () => {
     return (
@@ -17,6 +18,7 @@ const Home: React.FC = () => {
             <HomeAppoinment />
             <Review />
             <SupportUs />
+            <Footer />
         </div>
     );
 };
