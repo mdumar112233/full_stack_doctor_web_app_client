@@ -10,7 +10,7 @@ import Footer from '../../components/common/Footer';
 
 const Home: React.FC = () => {
     return (
-        <div className='mt-5'>
+        <div className=''>
             <TopBanner />
             <HomeService />
             <Statistic />

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 
 const Home = React.lazy(() => import('../pages/home/Home'));
+const Services = React.lazy(() => import('../pages/services/Services'));
 
 const AppRoute: React.FC = ({children}) => {
     console.log(children)
@@ -10,6 +11,7 @@ const AppRoute: React.FC = ({children}) => {
                 {children}
             <Routes>
                     <Route path='/' element={<Home />} />
+                    <Route path='/services' element={<Services />} />
             </Routes>
             {/* {children} */}
         </Suspense>

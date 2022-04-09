@@ -22,6 +22,8 @@ module.exports = {
       'topBanner': "url('/src/assets/images/banner.jpg')",
       'statistic': "url('/src/assets/images/doctor-image-4.jpg')",
       'doctorBg': "url('/src/assets/images/doctor-image-3.jpg')",
+      'service_banner_1': "url('/src/assets/images/service_banner1.jpg')",
+      'service_banner_2': "url('/src/assets/images/service_banner2.jpg')",
     },
     fontFamily: {
       'exo': ["Exo", 'sans-serif'],

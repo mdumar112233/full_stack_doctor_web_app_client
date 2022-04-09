@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { MdMarkEmailUnread, MdLocationPin } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -34,10 +34,10 @@ const Header: React.FC = () => {
       </div>
 
       {/* navbar bottom section */}
-      {/* <Navbar {...props} /> */}
-      <nav className="xm:w-[80%] mx-auto w-[90%] tablet:flex items-center justify-between mt-4">
+      <nav className="xm:w-[80%] mx-auto w-[90%] tablet:flex items-center justify-between mt-4 mb-5">
         <div className="flex justify-between items-center">
-          <img src={logo} alt="logo" className="cursor-pointer h-10 2xm:h-12 md:h-14" />
+          <Link to='/'>
+          <img src={logo} alt="logo" className="cursor-pointer h-10 2xm:h-12 md:h-14" /></Link>
           <AiOutlineMenu
             className={menu ? "text-2xl tablet:hidden block cursor-pointer": "text-2xl tablet:hidden block cursor-pointer"}
             onClick={() => setMenu(!menu)}
