@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
     <footer className="text-gray-400 bg-[#f4f9fc] body-font">
       <section className="w-[90%] tablet:w-[80%] mx-auto">
         <div className="px-5 py-24 mx-auto flex md:items-center xl:items-start lg:flex-row lg:flex-nowrap flex-wrap flex-col">
-          <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left lg:mb-0 md:mb-10 lg:mr-20">
+          <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center lg:text-left lg:mb-0 md:mb-10 lg:mr-20">
             <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
               <img src={logo} alt="logo" />
             </a>

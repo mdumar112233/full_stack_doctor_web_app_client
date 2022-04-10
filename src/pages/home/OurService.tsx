@@ -16,6 +16,7 @@ const OurService: React.FC = () => {
                 <div className='flex justify-center flex-row my-3'><div className="bg-pink-color w-10 h-1"></div></div>
                 <p className='text-main-normal md:w-3/5 mx-auto'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente cupiditate distinctio libero rem deserunt delectus! Sapiente cupiditate distinctio libero rem deserunt delectus!</p>
             </div>
+            
             {/* service card */}
             <div className='grid grid-flow-row tablet:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 mt-10'>
                 <div className='bg-white rounded-lg h-auto py-8 pl-8 pr-5'>
