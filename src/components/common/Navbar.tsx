@@ -78,7 +78,7 @@ const Header: React.FC = () => {
               <NavLink to="/admin">Admin</NavLink>
             </li> */}
             <li className="hover:text-pink-color">
-              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/dashboard">Dashboard</NavLink>
             </li>
             {!isLogin ? (
               <li className="hover:text-pink-color">

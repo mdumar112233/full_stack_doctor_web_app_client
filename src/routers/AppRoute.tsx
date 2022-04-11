@@ -6,17 +6,22 @@ const Services = React.lazy(() => import('../pages/services/Services'));
 const Doctors = React.lazy(() => import('../pages/doctors/Doctors'));
 const SignUp = React.lazy(() => import('../pages/account/SignUp'));
 const Login = React.lazy(() => import('../pages/account/Login'));
+const Sidebar = React.lazy(() => import('../pages/dashboard/Sidebar'));
+const Dashboard = React.lazy(() => import('../pages/dashboard/Dashboard'));
 
 const AppRoute: React.FC = ({children}) => {
     return (
         <Suspense fallback={<div>Loading.....</div>}>
-            {children}
+            {/* {children} */}
             <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/services' element={<Services />} />
                     <Route path='/doctors' element={<Doctors />} />
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/login' element={<Login />} />
+                    <Route  path='/dashboard' element={<Sidebar />}>
+                        <Route index element={<Dashboard />} />
+                    </Route>
             </Routes>
         </Suspense>
     );
