@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo.png";
 const Header: React.FC = () => {
   const [menu, setMenu] = useState<Boolean>(false);
 
+  let isLogin = true;
   return (
     <section>
       {/* navbar top section */}
@@ -36,16 +37,31 @@ const Header: React.FC = () => {
       {/* navbar bottom section */}
       <nav className="xm:w-[80%] mx-auto w-[90%] tablet:flex items-center justify-between mt-4 mb-5">
         <div className="flex justify-between items-center">
-          <Link to='/'>
-          <img src={logo} alt="logo" className="cursor-pointer h-10 2xm:h-12 md:h-14" /></Link>
+          <Link to="/">
+            <img
+              src={logo}
+              alt="logo"
+              className="cursor-pointer h-10 2xm:h-12 md:h-14"
+            />
+          </Link>
           <AiOutlineMenu
-            className={menu ? "text-2xl tablet:hidden block cursor-pointer": "text-2xl tablet:hidden block cursor-pointer"}
+            className={
+              menu
+                ? "text-2xl tablet:hidden block cursor-pointer"
+                : "text-2xl tablet:hidden block cursor-pointer"
+            }
             onClick={() => setMenu(!menu)}
           />
         </div>
 
         <div>
-          <ul className={menu ? "tablet:flex tablet:space-x-10 font-medium tablet:mt-0 mt-5 tablet:space-y-0 space-y-8 tablet:ml-0 ml-3 block": "tablet:flex tablet:space-x-10 font-medium tablet:mt-0 mt-5 tablet:space-y-0 space-y-8 tablet:ml-0 ml-3 hidden"}>
+          <ul
+            className={
+              menu
+                ? "tablet:flex tablet:space-x-10 font-medium tablet:mt-0 mt-5 tablet:space-y-0 space-y-8 tablet:ml-0 ml-3 block"
+                : "tablet:flex tablet:space-x-10 font-medium tablet:mt-0 mt-5 tablet:space-y-0 space-y-8 tablet:ml-0 ml-3 hidden"
+            }
+          >
             <li className="hover:text-pink-color">
               <NavLink to="/">Home</NavLink>
             </li>
@@ -58,12 +74,21 @@ const Header: React.FC = () => {
             <li className="hover:text-pink-color">
               <NavLink to="/about">About</NavLink>
             </li>
-            <li className="hover:text-pink-color">
+            {/* <li className="hover:text-pink-color">
               <NavLink to="/admin">Admin</NavLink>
-            </li>
+            </li> */}
             <li className="hover:text-pink-color">
               <NavLink to="/profile">Profile</NavLink>
             </li>
+            {!isLogin ? (
+              <li className="hover:text-pink-color">
+                <NavLink to="/logout">Logout</NavLink>
+              </li>
+            ) : (
+              <li className="hover:text-pink-color">
+                <NavLink to="/signup">Login/SingUp</NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
