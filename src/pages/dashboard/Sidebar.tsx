@@ -10,33 +10,9 @@ const Sidebar: React.FC = () => {
     return (
         <section className='grid grid-flow-row md:grid-cols-5 grid-cols-1'>
             {/* dashboard sidebar */}
-            <div className='bg-main-color md:h-[100vh] md:py-0 py-5'>
-                <div className='md:mt-10 ml-10 hidden'>
-                    <ul className='md:space-y-5 flex md:flex-col flex-row items-center md:items-start'>
-                        <li className='text-white flex items-center space-x-2'>
-                            <MdArrowBack /> <Link to='/' className='text-lg'>Home</Link>
-                        </li>
-                        <li className='text-white flex items-center space-x-2'>
-                            <MdDashboard /> <Link to='/' className='text-lg'>Dashboard</Link>
-                        </li>
-                        <li className='text-white flex items-center space-x-2'>
-                            <AiOutlineUsergroupAdd /> <Link to='/' className='text-lg'>Patients</Link>
-                        </li>
-                    </ul>
-                </div>
-
-                {/* for mobile */}
-                <div className='w-[90%] mx-auto'>
-                    <div className='flex justify-between'>
-                        <div className='flex items-center text-white'>
-                            <MdArrowBack /> <Link to='/' className='text-lg ml-2'>Home</Link>
-                        </div>
-                        <div>
-                            <AiOutlineMenu className="text-2xl cursor-pointer text-white"/>
-                        </div>
-                    </div>
-
-                    <ul className='w-20'>
+            <div className='bg-main-color md:h-screen md:py-0 py-5'>
+                <div className='md:mt-10 ml-10'>
+                    <ul className='md:space-y-5 space-y-3'>
                         <li className='text-white flex items-center space-x-2'>
                             <MdArrowBack /> <Link to='/' className='text-lg'>Home</Link>
                         </li>
@@ -51,8 +27,10 @@ const Sidebar: React.FC = () => {
             </div>
 
             {/* dashboard main  content */}
-            <div className='border border-gray-700 col-span-4 w-[90%] mx-auto'>
+            <div className='bg-[#F4FDFB] w-full col-span-4 '>
+            <div className='w-[90%] mx-auto'>
                 <Outlet/>
+            </div>
             </div>
         </section>
     );
