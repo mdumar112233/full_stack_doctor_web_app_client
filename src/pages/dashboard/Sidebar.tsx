@@ -17,10 +17,10 @@ const Sidebar: React.FC = () => {
                             <MdArrowBack /> <Link to='/' className='text-lg'>Home</Link>
                         </li>
                         <li className='text-white flex items-center space-x-2'>
-                            <MdDashboard /> <Link to='/' className='text-lg'>Dashboard</Link>
+                            <MdDashboard /> <Link to='/dashboard' className='text-lg'>Dashboard</Link>
                         </li>
                         <li className='text-white flex items-center space-x-2'>
-                            <AiOutlineUsergroupAdd /> <Link to='/' className='text-lg'>Patients</Link>
+                            <AiOutlineUsergroupAdd /> <Link to='/dashboard/patients' className='text-lg'>Patients</Link>
                         </li>
                     </ul>
                 </div>

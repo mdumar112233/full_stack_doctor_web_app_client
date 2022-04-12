@@ -8,6 +8,7 @@ const SignUp = React.lazy(() => import('../pages/account/SignUp'));
 const Login = React.lazy(() => import('../pages/account/Login'));
 const Sidebar = React.lazy(() => import('../pages/dashboard/Sidebar'));
 const Dashboard = React.lazy(() => import('../pages/dashboard/Dashboard'));
+const Patients = React.lazy(() => import('../pages/dashboard/Patients'));
 
 const AppRoute: React.FC = ({children}) => {
     return (
@@ -21,6 +22,7 @@ const AppRoute: React.FC = ({children}) => {
                     <Route path='/login' element={<Login />} />
                     <Route  path='/dashboard' element={<Sidebar />}>
                         <Route index element={<Dashboard />} />
+                        <Route path='patients' element={<Patients />} />
                     </Route>
             </Routes>
         </Suspense>

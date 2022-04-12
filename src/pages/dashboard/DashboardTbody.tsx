@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
 import { AiFillDelete } from "react-icons/ai";
 
-const DashboardTbody: React.FC<any> = (props) => {
+interface IProps {
+    openModal: () => void;
+    id: string;
+    date: string;
+    time: string;
+    name: string;
+    contact: string;
+}
+
+const DashboardTbody: React.FC<IProps> = ({id, date, time, name, contact, openModal}) => {
     const [approved, setApproved] = useState<string>('')
 
     const isApproved = true
     const isNotApproved = false
+
     return (
         <tbody>
                 <tr className="font-medium">
-                  <td className="py-4 px-6">1</td>
-                  <td className="py-4 px-6">2020-02-21</td>
-                  <td className="py-4 px-6">2:22 PM</td>
-                  <td className="py-4 px-6">Karim</td>
-                  <td className="py-4 px-6">9298329838</td>
+                  <td className="py-4 px-6">{id}</td>
+                  <td className="py-4 px-6">{date}</td>
+                  <td className="py-4 px-6">{time} PM</td>
+                  <td className="py-4 px-6">{name}</td>
+                  <td className="py-4 px-6">{contact}</td>
                   <td className="py-4 px-6">
                     <div className='flex items-center'>
                         <div className="bg-[#3DA5F4] w-28 py-1 px-2 rounded mr-3">
@@ -30,7 +40,7 @@ const DashboardTbody: React.FC<any> = (props) => {
                             </select>
                         </div>
                         
-                        <div className='bg-[#F1536E] text-white p-2 rounded cursor-pointer' onClick={props.openModal}>
+                        <div className='bg-[#F1536E] text-white p-2 rounded cursor-pointer' onClick={openModal}>
                             <AiFillDelete />
                         </div>
                     </div>

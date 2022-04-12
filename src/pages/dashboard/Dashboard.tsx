@@ -1,17 +1,40 @@
 import React, { useState } from "react";
 import DashboardTbody from "./DashboardTbody";
-import Modal from 'react-modal';
+import Modal from "react-modal";
+
+const table_data = [
+  {
+    id: "1",
+    date: "22-3-2030",
+    time: "22:00",
+    name: "rofik hasan",
+    contact: "398923239",
+  },
+  {
+    id: "2",
+    date: "22-3-2030",
+    time: "22:00",
+    name: "sojib",
+    contact: "398923239",
+  },
+  {
+    id: "3",
+    date: "22-3-2030",
+    time: "22:00",
+    name: "rasel",
+    contact: "398923239",
+  },
+];
 
 const Dashboard: React.FC = () => {
-
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -89,7 +112,16 @@ const Dashboard: React.FC = () => {
                   </th>
                 </tr>
               </thead>
-              <DashboardTbody openModal={openModal} />
+              {table_data.map((data) => (
+                <DashboardTbody
+                  openModal={openModal}
+                  id={data.id}
+                  date={data.date}
+                  time={data.time}
+                  name={data.name}
+                  contact={data.contact}
+                />
+              ))}
             </table>
           </div>
         </div>
@@ -106,12 +138,18 @@ const Dashboard: React.FC = () => {
         <div className="py-4 ">
           <h2>Do you want to delete this appointment?</h2>
           <div className="flex justify-center text-white mt-5">
-            <button className="bg-pink-color py-1 px-6 rounded mr-5">Yes</button>
-            <button className="border border-pink-color text-pink-color py-1 px-6 rounded" onClick={closeModal}>No</button>
+            <button className="bg-pink-color py-1 px-6 rounded mr-5">
+              Yes
+            </button>
+            <button
+              className="border border-pink-color text-pink-color py-1 px-6 rounded"
+              onClick={closeModal}
+            >
+              No
+            </button>
           </div>
         </div>
       </Modal>
-
     </section>
   );
 };
