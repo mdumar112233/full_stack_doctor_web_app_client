@@ -7,11 +7,13 @@ import service_5 from "../../assets/images/service-6.jpg";
 import service_6 from "../../assets/images/service-8.jpg";
 import { BiChevronRight } from "react-icons/bi";
 import Footer from "../../components/common/Footer";
+import Header from "../../components/common/Navbar";
 
 const Services: React.FC = () => {
   return (
     <section>
       {/* service title */}
+      <Header />
       <div className="text-black bg-service_banner_1 h-80 bg-center">
         <div className="bg-[#273e67] h-80 opacity-90 text-white text-center pt-28">
           <p>Our services</p>

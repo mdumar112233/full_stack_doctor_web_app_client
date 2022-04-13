@@ -7,6 +7,7 @@ import doctor_2 from '../../assets/images/doctor_2.jpg';
 import doctor_3 from '../../assets/images/doctor_3.jpg';
 import doctor_4 from '../../assets/images/doctor_4.jpg';
 import DoctorsDetail from "./DoctorsDetail";
+import Header from "../../components/common/Navbar";
 
 const doctor_data = [
     {
@@ -108,6 +109,7 @@ const Doctors: React.FC = () => {
   return (
     <section>
       {/* doctors first banner */}
+      <Header />
       <div className="text-black bg-service_banner_1 h-80 bg-center">
         <div className="bg-[#273e67] h-80 opacity-90 text-white text-center pt-28">
           <p>All Doctors</p>

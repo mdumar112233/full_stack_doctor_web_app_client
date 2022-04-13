@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
-    return (
-        <section className="w-[90%] xm:w-[80%] mx-auto">
-             <div>
+  return (
+    <section className="w-[90%] xm:w-[80%] mx-auto">
+      <div className="mt-4">
         <Link to="/" className="text-lg">
-          BACK
+          BACK TO HOME
         </Link>
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center sm:mt-16 mt-8">
         <div className="shadow-md w-80 h-80 px-5 pt-5 space-y-8">
           <div className="">
             <input
@@ -40,15 +40,15 @@ const Login: React.FC = () => {
             </Link>
           </div>
           <div className="cursor-pointer -mt-5">
-              <p>Don't have an account?</p>
-            <div className='text-center border border-[#141414] w-full py-2 mt-4'>
-            <Link to="/signup">SIGNUP</Link>
+            <p>Don't have an account?</p>
+            <div className="text-center border border-[#141414] w-full py-2 mt-4">
+              <Link to="/signup">SIGNUP</Link>
             </div>
           </div>
         </div>
       </div>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Login;

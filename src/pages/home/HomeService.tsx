@@ -3,6 +3,7 @@ import doctor_imag_1 from "../../assets/images/doctor-image-1.jpg";
 import doctor_imag_2 from "../../assets/images/doctor-image-2.jpg";
 import doctor_imag_3 from "../../assets/images/doctor-image-3.jpg";
 import { BiChevronRight } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const HomeService: React.FC = () => {
   return (
@@ -42,10 +43,12 @@ const HomeService: React.FC = () => {
             temporibus rem!
           </p>
 
+          <Link to='/services'>
           <div className="mt-4 text-white hover:bg-main-color bg-pink-color w-28 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
             <p className="text-sm md:text-sm">Service</p>
             <BiChevronRight />
           </div>
+          </Link>
         </div>
       </div>
     </section>

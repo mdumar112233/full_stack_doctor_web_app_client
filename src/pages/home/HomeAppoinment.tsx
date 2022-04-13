@@ -2,6 +2,7 @@ import React from "react";
 import doctor_appoint from "../../assets/images/doctor-image-3.jpg";
 import { BiChevronRight } from "react-icons/bi";
 import { BsTelephoneForwardFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const HomeAppoinment: React.FC = () => {
   return (
@@ -22,10 +23,12 @@ const HomeAppoinment: React.FC = () => {
           ipsa officiis. Vel esse sit
           ipsa officiis.
         </p>
-        <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
-          <p className="text-sm md:text-base">MAKE APPOINMENT</p>
-          <BiChevronRight />
-        </div>
+        <Link to='/appointment'>
+          <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
+            <p className="text-sm md:text-base">MAKE APPOINMENT</p>
+            <BiChevronRight />
+          </div>
+        </Link>
       </div>
     </section>
   );

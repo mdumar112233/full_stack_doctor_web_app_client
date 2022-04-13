@@ -7,10 +7,12 @@ import HomeAppoinment from './HomeAppoinment';
 import Review from './Review';
 import SupportUs from './SupportUs';
 import Footer from '../../components/common/Footer';
+import Header from '../../components/common/Navbar';
 
 const Home: React.FC = () => {
     return (
         <div className=''>
+            <Header />
             <TopBanner />
             <HomeService />
             <Statistic />

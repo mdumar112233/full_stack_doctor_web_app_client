@@ -9,6 +9,7 @@ const Login = React.lazy(() => import('../pages/account/Login'));
 const Sidebar = React.lazy(() => import('../pages/dashboard/Sidebar'));
 const Dashboard = React.lazy(() => import('../pages/dashboard/Dashboard'));
 const Patients = React.lazy(() => import('../pages/dashboard/Patients'));
+const GetAppointment = React.lazy(() => import('../pages/appointment/GetAppointment'));
 
 const AppRoute: React.FC = ({children}) => {
     return (
@@ -24,6 +25,7 @@ const AppRoute: React.FC = ({children}) => {
                         <Route index element={<Dashboard />} />
                         <Route path='patients' element={<Patients />} />
                     </Route>
+                    <Route path='/appointment' element={<GetAppointment />} />
             </Routes>
         </Suspense>
     );

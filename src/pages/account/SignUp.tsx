@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const SignUp: React.FC = () => {
   return (
     <section className="w-[90%] xm:w-[80%] mx-auto">
-      <div>
+      <div className="mt-5">
         <Link to="/" className="text-lg">
-          BACK
+          BACK TO HOME
         </Link>
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center sm:mt-16 mt-8">
         <div className="shadow-md w-80 h-96 px-5 py-8 pb-6 space-y-8">
           <div className="">
             <input

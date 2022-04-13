@@ -72,7 +72,7 @@ const Header: React.FC = () => {
               <NavLink to="/doctors">Doctors</NavLink>
             </li>
             <li className="hover:text-pink-color">
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="#">About</NavLink>
             </li>
             {/* <li className="hover:text-pink-color">
               <NavLink to="/admin">Admin</NavLink>
