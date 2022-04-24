@@ -4,11 +4,26 @@ import { useState } from "react";
 import { MdMarkEmailUnread, MdLocationPin } from "react-icons/md";
 import { AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/images/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuth, signOut } from "firebase/auth";
+import { userLogout } from "../../redux/slices/loginSlice";
 
 const Header: React.FC = () => {
   const [menu, setMenu] = useState<Boolean>(false);
+  const dispatch = useDispatch();
 
-  let isLogin = true;
+  const isLogin = useSelector((state: any) => state.loginUser.isLogin)
+  console.log(isLogin)
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      dispatch(userLogout(''))
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
   return (
     <section>
       {/* navbar top section */}
@@ -80,9 +95,9 @@ const Header: React.FC = () => {
             <li className="hover:text-pink-color">
               <NavLink to="/dashboard">Dashboard</NavLink>
             </li>
-            {!isLogin ? (
+            {isLogin ? (
               <li className="hover:text-pink-color">
-                <NavLink to="/logout">Logout</NavLink>
+                <NavLink to="#" onClick={handleLogout}>Logout</NavLink>
               </li>
             ) : (
               <li className="hover:text-pink-color">

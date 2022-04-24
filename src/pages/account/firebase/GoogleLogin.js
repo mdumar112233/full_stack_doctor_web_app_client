@@ -1,16 +1,19 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { loginUser } from "../../../redux/slices/loginSlice";
 import initializeAuthentication from "./FirebaseInitializeApp";
+
 
 initializeAuthentication();
 
 const provider = new GoogleAuthProvider();
 
-const googleLogin = () => {
+const googleLogin = (dispatch) => {
   const auth = getAuth();
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
       console.log(user.email);
+      dispatch(loginUser(user.email))
     })
     .catch((error) => {
       const errorCode = error.code;

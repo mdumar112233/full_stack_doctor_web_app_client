@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import googleLogin from "./firebase/GoogleLogin";
 import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/slices/loginSlice";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp: React.FC = () => {
-  const [signUpInfo, setSignUpInfo] = useState<object>({
+  const [signUp, setSignUp] = useState<any>({
     username: '',
     email: '',
     password: '',
@@ -13,12 +15,31 @@ const SignUp: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleGoogleLogin = () => {
-    // googleLogin();
-    dispatch('faruk@gamilc.com')
+    googleLogin(dispatch);
   }
 
-  const handleSignUp = () => {
-    
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignUp({ ...signUp, email: e.target.value });
+  };
+
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignUp({ ...signUp, password: e.target.value });
+  };
+  
+  const handleSignUp = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, signUp.email, signUp.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('error code',errorCode, 'error message', errorMessage)
+      });
   }
 
   return (
@@ -38,7 +59,7 @@ const SignUp: React.FC = () => {
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] placeholder:text-sm pl-2"
               placeholder="User name"
-              onBlur={(e: React.ChangeEvent<HTMLInputElement>) => setSignUpInfo({...signUpInfo, username: e.target.value})}
+              onBlur={(e: React.ChangeEvent<HTMLInputElement>) => setSignUp({...signUp, username: e.target.value})}
             />
             <div className="border border-b-[#141414]"></div>
           </div>
@@ -50,7 +71,7 @@ const SignUp: React.FC = () => {
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
               placeholder="Email"
-              onBlur={(e) => setSignUpInfo({...signUpInfo, email: e.target.value})}
+              onBlur={handleEmail}
             />
             <div className="border border-b-[#141414]"></div>
           </div>
@@ -62,7 +83,7 @@ const SignUp: React.FC = () => {
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
               placeholder="Password"
-              onBlur={(e) => setSignUpInfo({...signUpInfo, password: e.target.value})}
+              onBlur={handlePassword}
             />
             <div className="border border-b-[#141414]"></div>
           </div>

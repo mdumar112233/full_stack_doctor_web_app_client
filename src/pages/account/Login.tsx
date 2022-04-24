@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import googleLogin from "./firebase/GoogleLogin";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login: React.FC = () => {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  
+  const handleGoogleLogin = () => {
+    googleLogin();
+  }
+
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin({ ...login, email: e.target.value });
+  };
+
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin({ ...login, password: e.target.value });
+  };
+
+  const handleLogin = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, login.email, login.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   return (
     <section className="w-[90%] xm:w-[80%] mx-auto">
       <div className="mt-4">
@@ -48,7 +81,7 @@ const Login: React.FC = () => {
             <div className="flex justify-center text-center">
               <div>
                 <p className="my-4">or</p>
-                <FcGoogle size={35} className="cursor-pointer" />
+                <FcGoogle size={35} className="cursor-pointer" onClick={handleGoogleLogin} />
               </div>
             </div>
           </div>
