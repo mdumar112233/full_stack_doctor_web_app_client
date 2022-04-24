@@ -8,6 +8,7 @@ import service_6 from "../../assets/images/service-8.jpg";
 import { BiChevronRight } from "react-icons/bi";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Navbar";
+import { Link } from "react-router-dom";
 
 const Services: React.FC = () => {
   return (
@@ -100,17 +101,22 @@ const Services: React.FC = () => {
 
       {/* service second banner */}
       <div className="bg-service_banner_2 bg-center h-[28rem]">
-      <div className="w-[80%] tablet:w-[80%] mx-auto pt-28">
+        <div className="w-[80%] tablet:w-[80%] mx-auto pt-28">
           <div className="tablet:w-[60%] md:w-[70%]">
             <div className="bg-pink-color w-10 h-1"></div>
             <h1 className="text-3xl sm:text-5xl font-bold my-8">
-              We are pleased to offer you the <span className="text-main-color">chance to have the healthy</span>
+              We are pleased to offer you the{" "}
+              <span className="text-main-color">
+                chance to have the healthy
+              </span>
             </h1>
 
-            <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
-              <p className="text-sm md:text-base">MAKE APPOINMENT</p>
-              <BiChevronRight />
-            </div>
+            <Link to="/appointment">
+              <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
+                <p className="text-sm md:text-base">MAKE APPOINMENT</p>
+                <BiChevronRight />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

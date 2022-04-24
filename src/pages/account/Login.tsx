@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const Login: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-center sm:mt-16 mt-8">
-        <div className="shadow-md w-80 h-80 px-5 pt-5 space-y-8">
+        <div className="shadow-md w-80 h-[25rem] px-5 pt-5 space-y-8">
           <div className="">
             <input
               type="email"
@@ -39,10 +40,16 @@ const Login: React.FC = () => {
               LOGIN
             </Link>
           </div>
-          <div className="cursor-pointer -mt-5">
+          <div className="-mt-5">
             <p>Don't have an account?</p>
-            <div className="text-center border border-[#141414] w-full py-2 mt-4">
+            <div className="text-center border border-[#141414] w-full py-2 mt-4 cursor-pointer">
               <Link to="/signup">SIGNUP</Link>
+            </div>
+            <div className="flex justify-center text-center">
+              <div>
+                <p className="my-4">or</p>
+                <FcGoogle size={35} className="cursor-pointer" />
+              </div>
             </div>
           </div>
         </div>

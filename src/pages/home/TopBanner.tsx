@@ -8,7 +8,7 @@ const TopBanner: React.FC = () => {
   return (
     <section>
       {/* top banner */}
-      <div className="tablet:bg-topBanner bg-no-repeat bg-cover h-[100vh] object-cover mb-28">
+      <div className="tablet:bg-topBanner bg-no-repeat bg-cover tablet:h-[100vh] object-cover mb-28">
         <div className="w-[80%] tablet:w-[80%] mx-auto pt-20">
           <div className="tablet:w-[60%] md:w-[70%]">
             <div className="bg-pink-color w-10 h-1"></div>
@@ -35,7 +35,7 @@ const TopBanner: React.FC = () => {
       </div>
 
       {/* information card */}
-      <div className="w-[90%] xm:w-[80%] mx-auto mb-20 -mt-48">
+      <div className="w-[90%] xm:w-[80%] mx-auto mb-36 tablet:-mt-48 -mt-16">
         <div className="grid grid-flow-row tablet:grid-cols-3 grid-cols-1 gap-10">
           <div className="shadow-md h-80 bg-white rounded-2xl p-8">
             <MdLocalHospital className="text-main-color" size={45} />

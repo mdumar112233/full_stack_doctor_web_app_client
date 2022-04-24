@@ -8,6 +8,7 @@ import doctor_3 from '../../assets/images/doctor_3.jpg';
 import doctor_4 from '../../assets/images/doctor_4.jpg';
 import DoctorsDetail from "./DoctorsDetail";
 import Header from "../../components/common/Navbar";
+import { useEffect } from "react";
 
 const doctor_data = [
     {
@@ -106,6 +107,18 @@ const Doctors: React.FC = () => {
       setDepartment('Traumatology')
     }
 
+
+    useEffect(() => {
+      fetch('http://127.0.0.1:8000/getuser/', {
+        method: 'GET',
+        headers: {
+        'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNzA2MDg4LCJpYXQiOjE2NTA3MDQ4ODgsImp0aSI6IjZhOGY0MmYzOWQwZTRmNGY4ZjFkNjJkYzgzOTc5NjMyIiwidXNlcl9pZCI6Mn0.0HZSK-5PMe5CkIjoUpBN7DY4MxQ2uKj196UxINL4lC4'}`}
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+
+    }, [])
+
   return (
     <section>
       {/* doctors first banner */}
@@ -184,12 +197,18 @@ const Doctors: React.FC = () => {
               </span>
             </h1>
 
-            <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
-              <p className="text-sm md:text-base">MAKE APPOINMENT</p>
-              <BiChevronRight />
-            </div>
+            <Link to="/appointment">
+              <div className="mt-4 text-white hover:bg-main-color bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
+                <p className="text-sm md:text-base">MAKE APPOINMENT</p>
+                <BiChevronRight />
+              </div>
+            </Link>
           </div>
         </div>
+      </div>
+
+      <div>
+
       </div>
 
       <Footer />

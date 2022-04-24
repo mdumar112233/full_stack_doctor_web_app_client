@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const HomeService: React.FC = () => {
   return (
-    <section className="w-[90%] xm:w-[80%] mx-auto mb-20">
+    <section className="w-[90%] xm:w-[80%] mx-auto mb-36">
       <div className="flex tablet:flex-row flex-col tablet:space-x-8 w-full">
         {/* image */}
         <div className="flex">
