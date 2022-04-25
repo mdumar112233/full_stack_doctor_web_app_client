@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Navbar";
 import { MdOutlineSupportAgent } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiChevronRight } from "react-icons/bi";
 
 const GetAppointment: React.FC = () => {
+  const [userInfo, setUserInfo] = useState<any>({});
+  const navigate = useNavigate();
 
-  const handleSelect = (e: any) => {
-    console.log(e.target.value)
+  const handleUserData = (e: any) => {
+    const newUserInfo = {...userInfo};
+    newUserInfo[e.target.name] = e.target.value;
+    setUserInfo(newUserInfo);
+  }
+  console.log(userInfo)
+
+  const handleAppointment = (e: { preventDefault: () => void; }) => {
+    fetch('http://localhost:5000/appointment/', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(userInfo)
+    })
+    .then(res => res.json())
+    .then(result => {
+      result && navigate('/appointsuccess')
+    })
+    e.preventDefault()
   }
 
   return (
@@ -45,8 +63,8 @@ const GetAppointment: React.FC = () => {
 
             <div className="space-y-4">
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <select name="" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleSelect}>
-                        <option selected>Choose Department</option>
+                    <select name="selectDepartment" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleUserData} value={'check'}>
+                        <option >Choose Department</option>
                         <option>Child Care</option>
                         <option>Personal Care</option>
                         <option>CT scan</option>
@@ -56,7 +74,7 @@ const GetAppointment: React.FC = () => {
                         <option>Dental Care</option>
                     </select>
 
-                    <select name="" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm">
+                    <select name="selectDoctor" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleUserData}>
                         <option selected>Select Doctor</option>
                         <option>Thomas Henry</option>
                         <option>Henry Samuel</option>
@@ -67,24 +85,24 @@ const GetAppointment: React.FC = () => {
                 </div>
 
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <input type="date" name="date" placeholder="yyyy/mm/dd" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
-                    <input type="time" name="date" placeholder="Time" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
+                    <input type="date" name="date" placeholder="yyyy/mm/dd" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" onBlur={handleUserData} required/>
+                    <input type="time" name="time" placeholder="Time" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" onBlur={handleUserData} />
                 </div>
 
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <input type="text" name="date" placeholder="Full Name" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
-                    <input type="text" name="date" placeholder="Phone Number" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
+                    <input type="text" name="name" placeholder="Full Name" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" onBlur={handleUserData} />
+                    <input type="text" name="number" placeholder="Phone Number" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" onBlur={handleUserData} />
                 </div>
 
                 <div>
-                <input type="text" name="date" placeholder="Your Message" className="bg-[#f4f9fc] text-sm pb-20 pl-3 pt-2 outline-none placeholder:text-[#495057] border border-[#ced4da]  xl:w-full md:w-[41.1rem] sm:w-[35rem] w-full" />
+                <input type="text" name="message" placeholder="Your Message" className="bg-[#f4f9fc] text-sm pb-20 pl-3 pt-2 outline-none placeholder:text-[#495057] border border-[#ced4da]  xl:w-full md:w-[41.1rem] sm:w-[35rem] w-full" onBlur={handleUserData} />
                 </div>
-                <Link to="/appointsuccess">
-              <div className="mt-6 text-white bg-main-color hover:bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer">
+                {/* <Link to="/appointsuccess"> */}
+              <div className="mt-6 text-white bg-main-color hover:bg-pink-color md:w-60 w-48 py-3 px-4 rounded-3xl transition-all flex items-center justify-between cursor-pointer" onClick={handleAppointment}>
                 <p className="text-sm md:text-base">MAKE APPOINMENT</p>
                 <BiChevronRight />
               </div>
-            </Link>
+            {/* </Link> */}
             </div>
 
           </div>

@@ -3,23 +3,30 @@ import { AiFillDelete } from "react-icons/ai";
 
 interface IProps {
     openModal: () => void;
+    index:  string;
     id: string;
     date: string;
     time: string;
     name: string;
     contact: string;
+    setDeleteId: any;
 }
 
-const DashboardTbody: React.FC<IProps> = ({id, date, time, name, contact, openModal}) => {
+const DashboardTbody: React.FC<IProps> = ({id, index, date, time, name, contact, openModal, setDeleteId}) => {
     const [approved, setApproved] = useState<string>('')
 
     const isApproved = true
     const isNotApproved = false
 
+    const handleDelete = (id: string) => {
+        openModal()
+        setDeleteId(id)
+    }
+
     return (
         <tbody>
                 <tr className="font-medium">
-                  <td className="py-4 px-6">{id}</td>
+                  <td className="py-4 px-6">{index}</td>
                   <td className="py-4 px-6">{date}</td>
                   <td className="py-4 px-6">{time} PM</td>
                   <td className="py-4 px-6">{name}</td>
@@ -40,7 +47,7 @@ const DashboardTbody: React.FC<IProps> = ({id, date, time, name, contact, openMo
                             </select>
                         </div>
                         
-                        <div className='bg-[#F1536E] text-white p-2 rounded cursor-pointer' onClick={openModal}>
+                        <div className='bg-[#F1536E] text-white p-2 rounded cursor-pointer' onClick={() => handleDelete(id)}>
                             <AiFillDelete />
                         </div>
                     </div>
