@@ -1,30 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import googleLogin from "./firebase/GoogleLogin";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/slices/loginSlice";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import cogoToast from 'cogo-toast';
 
 const SignUp: React.FC = () => {
   const [signUp, setSignUp] = useState<any>({
-    username: '',
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log(signUp)
+
   const handleGoogleLogin = () => {
-    googleLogin(dispatch);
+    googleLogin(dispatch, navigate);
   }
 
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSignUp({ ...signUp, email: e.target.value });
-  };
-
-  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSignUp({ ...signUp, password: e.target.value });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+    let  isInputValid;
+    if(e.target.name === 'email'){
+        isInputValid = /\S+@\S+\.\S+/.test(e.target.value);
+    }
+    if(e.target.name === 'password'){
+        isInputValid = e.target.value.length > 6;
+    }
+    if(isInputValid){
+        const newUserInfo = {...signUp};
+        newUserInfo[e.target.name] = e.target.value;
+        setSignUp(newUserInfo);
+    }
+}
   
   const handleSignUp = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -33,12 +43,13 @@ const SignUp: React.FC = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user)
+        cogoToast.success('User create successfully');
+        navigate('/login')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('error code',errorCode, 'error message', errorMessage)
+      cogoToast.error('Invalid email or password must be 6 character');
       });
   }
 
@@ -58,7 +69,7 @@ const SignUp: React.FC = () => {
               name=""
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] placeholder:text-sm pl-2"
-              placeholder="User name"
+              placeholder="User name (optional)"
               onBlur={(e: React.ChangeEvent<HTMLInputElement>) => setSignUp({...signUp, username: e.target.value})}
             />
             <div className="border border-b-[#141414]"></div>
@@ -67,11 +78,11 @@ const SignUp: React.FC = () => {
           <div className="">
             <input
               type="email"
-              name=""
+              name="email"
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
               placeholder="Email"
-              onBlur={handleEmail}
+              onBlur={handleChange}
             />
             <div className="border border-b-[#141414]"></div>
           </div>
@@ -79,11 +90,11 @@ const SignUp: React.FC = () => {
           <div className="">
             <input
               type="password"
-              name=""
+              name="password"
               id=""
               className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
               placeholder="Password"
-              onBlur={handlePassword}
+              onBlur={handleChange}
             />
             <div className="border border-b-[#141414]"></div>
           </div>

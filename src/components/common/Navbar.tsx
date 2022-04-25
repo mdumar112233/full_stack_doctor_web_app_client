@@ -13,7 +13,6 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state: any) => state.loginUser.isLogin)
-  console.log(isLogin)
 
   const handleLogout = () => {
     const auth = getAuth();

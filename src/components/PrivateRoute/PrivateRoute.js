@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = () => {
-    let isLogin = true
+    const isLogin = useSelector((state) => state.loginUser.isLogin)
     return (
         <div>
             {
