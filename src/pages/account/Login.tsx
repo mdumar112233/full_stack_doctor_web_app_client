@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import googleLogin from "./firebase/GoogleLogin";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/slices/loginSlice";
 import cogoToast from 'cogo-toast';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../redux/slices/loginSlice";
+import googleLogin from "./firebase/GoogleLogin";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState<any>({
@@ -35,6 +35,7 @@ const Login: React.FC = () => {
     }
 }
 
+
   const handleLogin = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, login.email, login.password)
@@ -42,6 +43,8 @@ const Login: React.FC = () => {
         // Signed in
         const user = userCredential.user;
         dispatch(loginUser(user.email))
+        const userLogin: any = user.email;
+        sessionStorage.setItem('isLogin', userLogin)
         cogoToast.success('User login successfully');
         navigate('/')
       })

@@ -107,18 +107,6 @@ const Doctors: React.FC = () => {
       setDepartment('Traumatology')
     }
 
-
-    useEffect(() => {
-      fetch('http://127.0.0.1:8000/getuser/', {
-        method: 'GET',
-        headers: {
-        'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNzA2MDg4LCJpYXQiOjE2NTA3MDQ4ODgsImp0aSI6IjZhOGY0MmYzOWQwZTRmNGY4ZjFkNjJkYzgzOTc5NjMyIiwidXNlcl9pZCI6Mn0.0HZSK-5PMe5CkIjoUpBN7DY4MxQ2uKj196UxINL4lC4'}`}
-      })
-      .then(res => res.json())
-      .then(data => console.log(data))
-
-    }, [])
-
   return (
     <section>
       {/* doctors first banner */}

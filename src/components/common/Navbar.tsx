@@ -1,20 +1,21 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
-import { MdMarkEmailUnread, MdLocationPin } from "react-icons/md";
-import { AiOutlineMenu } from "react-icons/ai";
-import logo from "../../assets/images/logo.png";
-import { useDispatch, useSelector } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
+import React, { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { MdLocationPin, MdMarkEmailUnread } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 import { userLogout } from "../../redux/slices/loginSlice";
 
 const Header: React.FC = () => {
   const [menu, setMenu] = useState<Boolean>(false);
   const dispatch = useDispatch();
 
-  const isLogin = useSelector((state: any) => state.loginUser.isLogin)
+  const isLogin = useSelector((state: any) => state.loginUser.isLogin);
+  const localLogin: any = sessionStorage.getItem('isLogin');
 
-  const handleLogout = () => {
+  const handleLogout = (e: any) => {
+    e.preventDefault()
     const auth = getAuth();
     signOut(auth).then(() => {
       // Sign-out successful.
@@ -22,7 +23,10 @@ const Header: React.FC = () => {
     }).catch((error) => {
       console.log(error)
     });
+    sessionStorage.removeItem('isLogin')
+
   }
+
   return (
     <section>
       {/* navbar top section */}
@@ -94,7 +98,7 @@ const Header: React.FC = () => {
             <li className="hover:text-pink-color">
               <NavLink to="/dashboard">Dashboard</NavLink>
             </li>
-            {isLogin ? (
+            {localLogin ? (
               <li className="hover:text-pink-color">
                 <NavLink to="#" onClick={handleLogout}>Logout</NavLink>
               </li>

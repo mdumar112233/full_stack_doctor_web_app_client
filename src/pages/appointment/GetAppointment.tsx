@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 import { BiChevronRight } from "react-icons/bi";
 
 const GetAppointment: React.FC = () => {
+
+  const handleSelect = (e: any) => {
+    console.log(e.target.value)
+  }
+
   return (
     <section>
       <Header />
@@ -40,7 +45,7 @@ const GetAppointment: React.FC = () => {
 
             <div className="space-y-4">
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <select name="" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm">
+                    <select name="" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleSelect}>
                         <option selected>Choose Department</option>
                         <option>Child Care</option>
                         <option>Personal Care</option>
@@ -62,8 +67,8 @@ const GetAppointment: React.FC = () => {
                 </div>
 
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <input type="text" name="date" placeholder="yyyy/mm/dd" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
-                    <input type="text" name="date" placeholder="Time" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
+                    <input type="date" name="date" placeholder="yyyy/mm/dd" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
+                    <input type="time" name="date" placeholder="Time" className="bg-[#f4f9fc] text-sm py-3 pl-3 outline-none placeholder:text-[#495057] border border-[#ced4da] sm:w-[17rem] md:w-80" />
                 </div>
 
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">

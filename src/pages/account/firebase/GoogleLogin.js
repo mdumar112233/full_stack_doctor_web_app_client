@@ -1,7 +1,7 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import cogoToast from 'cogo-toast';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { loginUser } from "../../../redux/slices/loginSlice";
 import initializeAuthentication from "./FirebaseInitializeApp";
-import cogoToast from 'cogo-toast';
 
 initializeAuthentication();
 
@@ -13,6 +13,7 @@ const googleLogin = (dispatch, navigate) => {
     .then((result) => {
       const user = result.user;
       dispatch(loginUser(user.email))
+      sessionStorage.setItem('isLogin', user.email)
       cogoToast.success('User create successfully');
       navigate('/')
     })
