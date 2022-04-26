@@ -17,10 +17,11 @@ const GetAppointment: React.FC = () => {
   console.log(userInfo)
 
   const handleAppointment = (e: { preventDefault: () => void; }) => {
+    const userInfoData = {...userInfo, status: 'pending'}
     fetch('http://localhost:5000/appointment/', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify(userInfo)
+      body: JSON.stringify(userInfoData)
     })
     .then(res => res.json())
     .then(result => {
@@ -63,7 +64,7 @@ const GetAppointment: React.FC = () => {
 
             <div className="space-y-4">
                 <div className="flex sm:space-x-5 sm:flex-row flex-col sm:space-y-0 space-y-4">
-                    <select name="selectDepartment" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleUserData} value={'check'}>
+                    <select name="selectDepartment" id="" className="outline-none border border-[#ced4da] bg-[#f4f9fc] sm:w-[17rem] md:w-80 py-3 px-2 text-[#495057] text-sm" onClick={handleUserData}>
                         <option >Choose Department</option>
                         <option>Child Care</option>
                         <option>Personal Care</option>

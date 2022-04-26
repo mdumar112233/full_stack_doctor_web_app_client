@@ -96,7 +96,7 @@ const Header: React.FC = () => {
               <NavLink to="/admin">Admin</NavLink>
             </li> */}
             <li className="hover:text-pink-color">
-              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to={localLogin === 'new@gmail.com' ? "/dashboard": '/myappointment' } >Dashboard</NavLink>
             </li>
             {localLogin ? (
               <li className="hover:text-pink-color">

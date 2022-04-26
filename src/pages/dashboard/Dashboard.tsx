@@ -2,30 +2,6 @@ import React, { useEffect, useState } from "react";
 import DashboardTbody from "./DashboardTbody";
 import Modal from "react-modal";
 
-const table_data = [
-  {
-    id: "1",
-    date: "22-3-2030",
-    time: "22:00",
-    name: "rofik hasan",
-    contact: "398923239",
-  },
-  {
-    id: "2",
-    date: "22-3-2030",
-    time: "22:00",
-    name: "sojib",
-    contact: "398923239",
-  },
-  {
-    id: "3",
-    date: "22-3-2030",
-    time: "22:00",
-    name: "rasel",
-    contact: "398923239",
-  },
-];
-
 const Dashboard: React.FC = () => {
   const [userData, setUserData] = useState<any>([]);
   const [deleteId, setDeleteId] = useState<any>('')
@@ -142,6 +118,7 @@ const Dashboard: React.FC = () => {
                   time={data.time}
                   name={data.name}
                   contact={data.number}
+                  status={data.status}
                   setDeleteId={setDeleteId}
                 />
               ))}
