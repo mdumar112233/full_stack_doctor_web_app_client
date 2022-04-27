@@ -50,8 +50,6 @@ const Login: React.FC = () => {
         navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
         cogoToast.error("Invalid email or password must be 6 character");
       });
   };

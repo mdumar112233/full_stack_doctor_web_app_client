@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import googleLogin from "./firebase/GoogleLogin";
 import { useDispatch } from "react-redux";
@@ -43,13 +43,11 @@ const SignUp: React.FC = () => {
     createUserWithEmailAndPassword(auth, signUp.email, signUp.password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        // const user = userCredential.user;
         cogoToast.success('User create successfully');
         navigate('/login')
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
       cogoToast.error('Invalid email or password must be 6 character');
       });
   }

@@ -13,7 +13,7 @@ const MyAppointment = () => {
     )
       .then((res) => res.json())
       .then((data) => setMyAppointmentData(data));
-  }, []);
+  }, [isLogin]);
 
   return (
     <>

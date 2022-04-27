@@ -24,9 +24,12 @@ const MyAppointmentTbody: React.FC<IProps> = ({id, index, department, doctor, da
                   <td className="py-4 px-6">{name}</td>
                   <td className="py-4 px-6">{contact}</td>
                   <td className="py-4 px-6">
-                    <div className={status == 'pending' ? 'bg-[#3DA5F4] text-white py-2 px-4 rounded-md': status == 'approved' ? 'bg-[#00C689] text-white py-2 px-4 rounded-md' : status == 'cancel' && 'bg-[#F1536E] text-white py-2 px-4 rounded-md'} >
+                    <div className='bg-[#3DA5F4] text-white py-2 px-4 rounded-md' >
                       {status}
                     </div>
+                    {/* <div className={status == 'pending' ? 'bg-[#3DA5F4] text-white py-2 px-4 rounded-md': status == 'approved' ? 'bg-[#00C689] text-white py-2 px-4 rounded-md' : status == 'cancel' && 'bg-[#F1536E] text-white py-2 px-4 rounded-md'} >
+                      {status}
+                    </div> */}
                   </td>
                 </tr>
               </tbody>

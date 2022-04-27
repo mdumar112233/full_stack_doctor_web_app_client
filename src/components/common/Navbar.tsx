@@ -2,7 +2,7 @@ import { getAuth, signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocationPin, MdMarkEmailUnread } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { userLogout } from "../../redux/slices/loginSlice";
@@ -12,7 +12,6 @@ const Header: React.FC = () => {
   const [menu, setMenu] = useState<Boolean>(false);
   const dispatch = useDispatch();
 
-  const isLogin = useSelector((state: any) => state.loginUser.isLogin);
   const localLogin: any = sessionStorage.getItem("isLogin");
   
   initializeAuthentication()

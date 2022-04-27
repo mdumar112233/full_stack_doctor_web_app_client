@@ -52,14 +52,7 @@ const DashboardTbody: React.FC<IProps> = ({
         <td className="py-4 px-6">
           <div className="flex items-center">
             <div
-              className={
-                status === "pending"
-                  ? "bg-[#3DA5F4] w-28 py-1 px-2 rounded mr-3"
-                  : status === "approved"
-                  ? "bg-[#00C689] w-28 py-1 px-2 rounded mr-3"
-                  : status === "cancel" &&
-                    "bg-[#F1536E] w-28 py-1 px-2 rounded mr-3"
-              }
+              className= "bg-[#3DA5F4] w-28 py-1 px-2 rounded mr-3"
             >
               <select
                 name="select"
@@ -70,7 +63,7 @@ const DashboardTbody: React.FC<IProps> = ({
                   value="approved"
                   className="text-black"
                   onClick={(e) => handleStatus(e, id)}
-                  selected={status == "approved" && true}
+                  selected={status === "approved" && true}
                 >
                   Approved
                 </option>
@@ -78,7 +71,7 @@ const DashboardTbody: React.FC<IProps> = ({
                   value="pending"
                   className="text-black"
                   onClick={(e) => handleStatus(e, id)}
-                  selected={status == "pending" && true}
+                  selected={status === "pending" && true}
                 >
                   Pending
                 </option>
@@ -86,7 +79,7 @@ const DashboardTbody: React.FC<IProps> = ({
                   value="cancel"
                   className="text-black"
                   onClick={(e) => handleStatus(e, id)}
-                  selected={status == "cancel" && true}
+                  selected={status === "cancel" && true}
                 >
                   Cancel
                 </option>
