@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const Home = React.lazy(() => import("../pages/home/Home"));
 const Services = React.lazy(() => import("../pages/services/Services"));
@@ -34,7 +34,7 @@ const AppRoute: React.FC = ({ children }) => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<PrivateRoute />}>
-          {isLogin === "new@gmail.com" ? (
+          {isLogin === "test@gmail.com" ? (
             <Route path="dashboard" element={<Sidebar />}>
               <Route index element={<Dashboard />} />
               <Route path="myappointment" element={<MyAppointment />} />

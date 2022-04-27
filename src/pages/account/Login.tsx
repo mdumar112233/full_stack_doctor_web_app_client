@@ -1,4 +1,4 @@
-import cogoToast from 'cogo-toast';
+import cogoToast from "cogo-toast";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/slices/loginSlice";
 import googleLogin from "./firebase/GoogleLogin";
+import initializeAuthentication from "./firebase/FirebaseInitializeApp";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState<any>({
@@ -14,27 +15,27 @@ const Login: React.FC = () => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
+  initializeAuthentication();
   const handleGoogleLogin = () => {
     googleLogin();
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
-    let  isInputValid;
-    if(e.target.name === 'email'){
-        isInputValid = /\S+@\S+\.\S+/.test(e.target.value);
+    console.log(e.target.value);
+    let isInputValid;
+    if (e.target.name === "email") {
+      isInputValid = /\S+@\S+\.\S+/.test(e.target.value);
     }
-    if(e.target.name === 'password'){
-        isInputValid = e.target.value.length > 6;
+    if (e.target.name === "password") {
+      isInputValid = e.target.value.length > 6;
     }
-    if(isInputValid){
-        const newUserInfo = {...login};
-        newUserInfo[e.target.name] = e.target.value;
-        setLogin(newUserInfo);
+    if (isInputValid) {
+      const newUserInfo = { ...login };
+      newUserInfo[e.target.name] = e.target.value;
+      setLogin(newUserInfo);
     }
-}
-
+  };
 
   const handleLogin = () => {
     const auth = getAuth();
@@ -42,19 +43,18 @@ const Login: React.FC = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        dispatch(loginUser(user.email))
+        dispatch(loginUser(user.email));
         const userLogin: any = user.email;
-        sessionStorage.setItem('isLogin', userLogin)
-        cogoToast.success('User login successfully');
-        navigate('/')
+        sessionStorage.setItem("isLogin", userLogin);
+        cogoToast.success("User login successfully");
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        cogoToast.error('Invalid email or password must be 6 character');
+        cogoToast.error("Invalid email or password must be 6 character");
       });
   };
-
 
   return (
     <section className="w-[90%] xm:w-[80%] mx-auto">
@@ -65,45 +65,63 @@ const Login: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-center sm:mt-16 mt-8">
-        <div className="shadow-md w-80 h-[25rem] px-5 pt-5 space-y-8">
-          <div className="">
-            <input
-              type="email"
-              name="email"
-              id=""
-              className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
-              placeholder="Email"
-              onBlur={handleChange}
-            />
-            <div className="border border-b-[#141414]"></div>
+        <div>
+          <div className="w-80">
+            <p>
+              Login as a Admin with this{" "}
+              <span className="font-bold">email</span> ={" "}
+              <span className="text-main-color">test@gmail.com </span>
+              <span className="font-bold ">pass</span> ={" "}
+              <span className="text-main-color">root1122</span>
+            </p>
           </div>
-
-          <div className="">
-            <input
-              type="password"
-              name="password"
-              id=""
-              className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
-              placeholder="Password"
-              onBlur={handleChange}
-            />
-            <div className="border border-b-[#141414]"></div>
-          </div>
-
-          <div className="bg-main-color hover:bg-pink-color transition-all py-2 text-center rounded cursor-pointer" onClick={handleLogin}>
-            <Link to="#" className="text-white">
-              LOGIN
-            </Link>
-          </div>
-          <div className="-mt-5">
-            <p>Don't have an account?</p>
-            <div className="text-center border border-[#141414] w-full py-2 mt-4 cursor-pointer">
-              <Link to="/signup">SIGNUP</Link>
+          <div className="shadow-md w-80 h-[25rem] px-5 pt-5 space-y-8">
+            <div className="">
+              <input
+                type="email"
+                name="email"
+                id=""
+                className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
+                placeholder="Email"
+                onBlur={handleChange}
+              />
+              <div className="border border-b-[#141414]"></div>
             </div>
-            <div className="flex justify-center text-center">
-              <div>
-                <p className="my-4">or</p>
-                <FcGoogle size={35} className="cursor-pointer" onClick={handleGoogleLogin} />
+
+            <div className="">
+              <input
+                type="password"
+                name="password"
+                id=""
+                className="bg-transparent focus:outline-none border-none w-full placeholder:text-[#141414] pl-2 placeholder:text-sm"
+                placeholder="Password"
+                onBlur={handleChange}
+              />
+              <div className="border border-b-[#141414]"></div>
+            </div>
+
+            <div
+              className="bg-main-color hover:bg-pink-color transition-all py-2 text-center rounded cursor-pointer"
+              onClick={handleLogin}
+            >
+              <Link to="#" className="text-white">
+                LOGIN
+              </Link>
+            </div>
+            <div className="-mt-5">
+              <p>Don't have an account?</p>
+              <div className="text-center border border-[#141414] w-full py-2 mt-4 cursor-pointer">
+                <Link to="/signup">SIGNUP</Link>
+              </div>
+              <div className="flex justify-center text-center">
+                <div>
+                  <p className="my-4">or</p>
+                  <FcGoogle
+                    size={35}
+                    className="cursor-pointer"
+                    onClick={handleGoogleLogin}
+                  />
+                </div>
               </div>
             </div>
           </div>

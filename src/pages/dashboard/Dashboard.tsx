@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import DashboardTbody from "./DashboardTbody";
 import Modal from "react-modal";
+import DashboardTbody from "./DashboardTbody";
 
 const Dashboard: React.FC = () => {
   const [userData, setUserData] = useState<any>([]);
-  const [deleteId, setDeleteId] = useState<any>('')
+  const [deleteId, setDeleteId] = useState<any>("");
 
   const customStyles = {
     content: {
@@ -27,21 +27,21 @@ const Dashboard: React.FC = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/getappointmentdata/')
-    .then(res => res.json())
-    .then(data => setUserData(data))
-  }, [])
+    fetch("https://fierce-plains-12852.herokuapp.com/getallappointment/")
+      .then((res) => res.json())
+      .then((data) => setUserData(data));
+  }, []);
 
   const deleteInfo = () => {
-    fetch(`http://localhost:5000/delete/${deleteId}`, {
-      method: 'DELETE'
+    fetch(`https://fierce-plains-12852.herokuapp.com/delete/${deleteId}/`, {
+      method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    closeModal()
-    window.location.reload()
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.reload();
+      });
+    closeModal();
+  };
 
   return (
     <section>
@@ -109,10 +109,10 @@ const Dashboard: React.FC = () => {
                   </th>
                 </tr>
               </thead>
-              {userData.map((data: any, index:  any) => (
+              {userData.map((data: any, index: any) => (
                 <DashboardTbody
                   openModal={openModal}
-                  id = {data._id}
+                  id={data._id}
                   index={index + 1}
                   date={data.date}
                   time={data.time}
@@ -138,7 +138,10 @@ const Dashboard: React.FC = () => {
         <div className="py-4 ">
           <h2>Do you want to delete this appointment?</h2>
           <div className="flex justify-center text-white mt-5">
-            <button className="bg-pink-color py-1 px-6 rounded mr-5" onClick={deleteInfo}>
+            <button
+              className="bg-pink-color py-1 px-6 rounded mr-5"
+              onClick={deleteInfo}
+            >
               Yes
             </button>
             <button

@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import { MdArrowBack, MdDashboard } from "react-icons/md";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BsJournalMedical } from "react-icons/bs";
+import { MdArrowBack, MdDashboard } from "react-icons/md";
+import { Link, Outlet } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
-  const isLogin = sessionStorage.getItem('isLogin')
+  const isLogin = sessionStorage.getItem("isLogin");
   return (
     <section className="grid grid-flow-row md:grid-cols-5 grid-cols-1">
       {/* dashboard sidebar */}
@@ -19,23 +18,37 @@ const Sidebar: React.FC = () => {
                 Home
               </Link>
             </li>
-            {isLogin === 'new@gmail.com' && (
-                <li className="text-white flex items-center space-x-2">
+            {isLogin === "test@gmail.com" && (
+              <li className="text-white flex items-center space-x-2">
                 <MdDashboard />{" "}
                 <Link to="/dashboard" className="text-lg">
                   Dashboard
                 </Link>
               </li>
             )}
-              <li className="text-white flex items-center space-x-2">
-                <BsJournalMedical />{" "}
-                <Link to={isLogin === 'new@gmail.com' ? "/dashboard/myappointment" : '/myappointment' } className="text-lg">
-                  My Appointment
-                </Link>
-              </li>
+            <li className="text-white flex items-center space-x-2">
+              <BsJournalMedical />{" "}
+              <Link
+                to={
+                  isLogin === "test@gmail.com"
+                    ? "/dashboard/myappointment"
+                    : "/myappointment"
+                }
+                className="text-lg"
+              >
+                My Appointment
+              </Link>
+            </li>
             <li className="text-white flex items-center space-x-2">
               <AiOutlineUsergroupAdd />{" "}
-              <Link to={isLogin === 'new@gmail.com' ? "/dashboard/patients": '/myappointment/patients'} className="text-lg">
+              <Link
+                to={
+                  isLogin === "test@gmail.com"
+                    ? "/dashboard/patients"
+                    : "/myappointment/patients"
+                }
+                className="text-lg"
+              >
                 Patients
               </Link>
             </li>

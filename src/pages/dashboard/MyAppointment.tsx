@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import MyAppointmentTbody from "./MyAppointmentTbody";
 
 const MyAppointment = () => {
-  const [myAppointmentData, setMyAppointmentData] = useState<object[]>([])
+  const [myAppointmentData, setMyAppointmentData] = useState<object[]>([]);
 
-  console.log(myAppointmentData)
+  console.log(myAppointmentData);
+  const isLogin = sessionStorage.getItem("isLogin");
 
   useEffect(() => {
-    fetch('http://localhost:5000/getappointmentdata/')
-    .then(res => res.json())
-    .then(data => setMyAppointmentData(data))
-  }, [])
-
+    fetch(
+      `https://fierce-plains-12852.herokuapp.com/getuserappointment?email=${isLogin}`
+    )
+      .then((res) => res.json())
+      .then((data) => setMyAppointmentData(data));
+  }, []);
 
   return (
     <>

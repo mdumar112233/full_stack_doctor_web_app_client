@@ -5,6 +5,8 @@ import googleLogin from "./firebase/GoogleLogin";
 import { useDispatch } from "react-redux";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import cogoToast from 'cogo-toast';
+import initializeAuthentication from './firebase/FirebaseInitializeApp';
+
 
 const SignUp: React.FC = () => {
   const [signUp, setSignUp] = useState<any>({
@@ -14,8 +16,7 @@ const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(signUp)
-
+  initializeAuthentication()
   const handleGoogleLogin = () => {
     googleLogin(dispatch, navigate);
   }
@@ -62,6 +63,17 @@ const SignUp: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-center sm:mt-12 mt-8">
+      
+        <div>
+        <div className="w-80">
+            <p>
+              Login as a Admin with this{" "}
+              <span className="font-bold">email</span> ={" "}
+              <span className="text-main-color">test@gmail.com </span>
+              <span className="font-bold ">pass</span> ={" "}
+              <span className="text-main-color">root1122</span>
+            </p>
+          </div>
         <div className="shadow-md w-80 h-auto px-5 pt-8 pb-2 space-y-8">
           <div className="">
             <input
@@ -125,6 +137,7 @@ const SignUp: React.FC = () => {
                 <FcGoogle size={35} className="cursor-pointer" onClick={handleGoogleLogin} />
               </div>
             </div>
+        </div>
         </div>
       </div>
     </section>

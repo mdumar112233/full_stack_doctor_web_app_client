@@ -6,26 +6,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { userLogout } from "../../redux/slices/loginSlice";
+import initializeAuthentication from "../../pages/account/firebase/FirebaseInitializeApp";
 
 const Header: React.FC = () => {
   const [menu, setMenu] = useState<Boolean>(false);
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state: any) => state.loginUser.isLogin);
-  const localLogin: any = sessionStorage.getItem('isLogin');
-
+  const localLogin: any = sessionStorage.getItem("isLogin");
+  
+  initializeAuthentication()
   const handleLogout = (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
     const auth = getAuth();
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      dispatch(userLogout(''))
-    }).catch((error) => {
-      console.log(error)
-    });
-    sessionStorage.removeItem('isLogin')
-
-  }
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        dispatch(userLogout(""));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    sessionStorage.removeItem("isLogin");
+  };
 
   return (
     <section>
@@ -45,7 +48,7 @@ const Header: React.FC = () => {
 
           <div className="flex items-center tablet:mt-0 mt-2">
             <p>Call Now : </p>{" "}
-            <span className="font-bold ml-2 xm:text-2xl text-[1rem]">
+            <span className="font-bold ml-2 xm:text-2xl text-[1rem]" onClick={() => console.log('hello')}>
               823-2383-32332
             </span>
           </div>
@@ -96,11 +99,21 @@ const Header: React.FC = () => {
               <NavLink to="/admin">Admin</NavLink>
             </li> */}
             <li className="hover:text-pink-color">
-              <NavLink to={localLogin === 'new@gmail.com' ? "/dashboard": '/myappointment' } >Dashboard</NavLink>
+              <NavLink
+                to={
+                  localLogin === "test@gmail.com"
+                    ? "/dashboard"
+                    : "/myappointment"
+                }
+              >
+                Dashboard
+              </NavLink>
             </li>
             {localLogin ? (
               <li className="hover:text-pink-color">
-                <NavLink to="#" onClick={handleLogout}>Logout</NavLink>
+                <NavLink to="#" onClick={handleLogout}>
+                  Logout
+                </NavLink>
               </li>
             ) : (
               <li className="hover:text-pink-color">
