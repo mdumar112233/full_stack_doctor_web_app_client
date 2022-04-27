@@ -24,9 +24,9 @@
 - Firebase Authentication
 - Heroku
 
-[Live Website](https://ak-inductry-auth.web.app/)
+[Live Website](https://doctor-app-982ee.web.app/)
 
-[Back-end Repository](https://github.com/mdumar112233/ak-industry-assignment-11-server)
+[Back-end Repository](https://github.com/mdumar112233/doctor_app_server)
 
 
 
